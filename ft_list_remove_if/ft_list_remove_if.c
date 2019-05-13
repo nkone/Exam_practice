@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 08:00:20 by phtruong          #+#    #+#             */
-/*   Updated: 2019/04/23 08:42:22 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/05/06 10:48:09 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ft_list.h"
 #include <string.h>
 #include <stdio.h>
-void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
+void		ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 {
 	t_list *list;
 	t_list *temp;
@@ -38,30 +38,7 @@ void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 		free(temp);
 	}
 }
-void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
-{
-	t_list *list;
-	t_list *tmp;
-
-	list = *begin_list;
-	while(list->next)
-	{
-		if(cmp(list->next->data, data_ref) == 0)
-		{
-			tmp = list->next;
-			list->next = tmp->next;
-			free(tmp);
-		}
-		else
-			list = list->next;
-	}
-	if(cmp((*begin_list)->data, data_ref) == 0)
-	{
-		tmp = (*begin_list);
-		*begin_list = tmp->next;
-		free(tmp);
-	}
-}
+/*
 int		cmp(void *s1, void *s2)
 {
 	return (strcmp((const char *)s1,(const char *)s2));
@@ -102,4 +79,4 @@ int main(void)
 	ft_list_remove_if(&tmp, "hello", cmp);
 	print_list(tmp);
 
-}
+}*/

@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 14:41:55 by phtruong          #+#    #+#             */
-/*   Updated: 2019/05/13 15:25:05 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/05/13 19:08:10 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,18 @@ int		count_words(char *s) {
 
 char **ft_split(char *str) {
 	int count = count_words(str);
-	if (!count)
-		return NULL;
 	char **arr = (char **)malloc(sizeof(char *)* count + 1);
+	if (!arr)
+		return (NULL);
 	arr[count] = NULL;
-	for (int i = 0; arr[i]; i++) {
+	for (int i = 0; i < count; i++) {
 		while (is_space(*str)) str++;
 		char *pstr = str;
 		while (*str && !is_space(*str)) str++;
 		int len = (int)(str - pstr);
 		arr[i] = (char *)malloc(sizeof(char)*len + 1);
+		if (!arr[i])
+			return (NULL);
 		for (int j = 0; j < len; j++)
 			arr[i][j] = *pstr++;
 		arr[i][len] = '\0';

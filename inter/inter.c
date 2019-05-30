@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 15:37:30 by phtruong          #+#    #+#             */
-/*   Updated: 2019/05/29 18:40:54 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/05/29 18:52:04 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,20 +76,24 @@ void	inter(char *s1, char *s2) {
 
 void	inter_driver(char *s1, char *s2)
 {
-	int tab[128];
-	int tab_order[128];
-	int tab2[128];
-	int i = 0;
+	int8_t tab[128];
+	int8_t tab_order[128];
+	int8_t tab2[128];
+	int8_t i = 0;
+	int8_t c = 0;
 
 	for (i = 0; *s1; s1++) {
-		if (tab[*s1] != *s1) {
-			tab[*s1] = *s1;
-			tab_order[i++] = tab[*s1];
+		c = *s1;
+		if (tab[c] != c) {
+			tab[c] = c;
+			tab_order[i++] = tab[c];
 		}
 	}
-	for (; *s2; s2++)
-		if (tab2[*s2] != *s2)
-			tab2[*s2] = *s2;
+	for (; *s2; s2++) {
+		c = *s2;
+		if (tab2[c] != c)
+			tab2[c] = c;
+	}
 	for(i = 0; tab_order[i] ; i++)
 		if (tab_order[i] == tab2[tab_order[i]])
 			ft_putchar(tab_order[i]);
